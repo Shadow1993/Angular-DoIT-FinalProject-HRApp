@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from './jobs.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jobs',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs.component.css']
 })
 export class JobsComponent implements OnInit {
+  public id;
+  jobs = {};
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _JobsService: JobsService) {
+    this._route.params.subscribe(params => {
+      this.id = params['id'];
+    })
+   }
 
   ngOnInit() {
+    this._JobsService.getAllJobs().subscribe(data => {
+      this.jobs = data;
+      console.log(data);
+    });
+
   }
 
 }
