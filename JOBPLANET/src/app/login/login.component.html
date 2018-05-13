@@ -1,8 +1,75 @@
-<form>
-  <label for='name'>Name:</label>
-  <input type="text" method='GET'>
-  <br>
-  <label for="password">Password:</label>
-  <input type="password" method='GET'><br>
-  <input type="submit" value="Submit">
+<form novalidate (ngSubmit)="save()" [formGroup]="logInForm">
+  <fieldset> 
+    <button type="button" class="socialmedia">Login with Facebook</button>
+    <br>
+    <br>
+    <button type="button" class="socialmedia">Login with Google</button>
+    <br>
+    <span> OR </span>
+    <br>
+
+    <!-- separate div for each input element -->
+    <div class="formInput" [ngClass]="{'has-error': (logInForm.get('name').touched || logInForm.get('name').dirty) && !logInForm.get('name').valid } ">
+      <label for="name">Name:</label>
+      <br>
+      <input id="name" type="text" placeholder="Your Name" formControlName="name" method='GET'>
+      <span *ngIf="(logInForm.get('name').touched || logInForm.get('name').dirty) && logInForm.get('name').errors">
+        <span *ngIf="logInForm.get('name').errors.required">
+          Please enter your name!
+        </span>
+        <br>
+
+        <span *ngIf="logInForm.get('name').errors.minlength">
+          Your name must be longer than 3 characters!
+        </span>
+        <br>
+
+      </span>
+    </div>
+    <br>
+    <!-- div for email input element -->
+    <div class="formInput" [ngClass]="{'has-error': (logInForm.get('email').touched || logInForm.get('email').dirty) && !logInForm.get('email').valid } ">
+      <label for="email">E-mail:</label>
+      <br>
+      <input id="emailID" type="email" placeholder="E-mail address" formControlName="email">
+      <span *ngIf="(logInForm.get('email').touched || logInForm.get('email').dirty) && logInForm.get('email').errors">
+        <span *ngIf="logInForm.get('email').errors.required">
+          Please enter your e-mail address!
+        </span>
+
+        <span *ngIf="logInForm.get('email').errors.pattern">
+          Enter a valid e-mail address!
+        </span>
+
+      </span>
+    </div>
+    <br>
+
+    <div class="formInput" [ngClass]="{'has-error': logInForm.get('password').touched || logInForm.get('password').dirty }">
+
+      <label for="password">Password:</label>
+      <br>
+      <input id="pwd" type="password" formControlName="password">
+      <span *ngIf="(logInForm.get('password').touched || logInForm.get('password').dirty) && logInForm.get('password').errors">
+        <span *ngIf="logInForm.get('password').errors.required">
+          Please enter your password!
+        </span>
+        <span *ngIf="logInForm.get('password').errors.minlength">
+          Password is at least 5 characters!
+        </span>
+
+      </span>
+    </div>
+    <br>
+    <span id="login">
+      <button class="socialmedia" type="submit" [disabled]="!logInForm.valid">
+        Log In
+      </button>
+    </span>
+
+  </fieldset>
 </form>
+<br> Dirty: {{ logInForm.dirty }}
+<br> Touched: {{ logInForm.touched }}
+<br> Valid: {{ logInForm.valid}}
+<br> Value: {{ logInForm.value | json }}
