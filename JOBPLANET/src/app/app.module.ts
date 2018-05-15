@@ -11,6 +11,8 @@ import { CompanyService } from './company/company.service';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
+import { JobsService } from './jobs/jobs.service';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -25,8 +27,9 @@ import { LoginModule } from './login/login.module';
     BrowserModule,
     AppRoutingModule,
     LoginModule,
+    HttpModule
   ],
-  providers: [UserService, CompanyService],
+  providers: [UserService, CompanyService, JobsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
