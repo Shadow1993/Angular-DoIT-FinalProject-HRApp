@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobsComponent implements OnInit {
   public id;
-  jobs = {};
+  public jobs;
 
   constructor(private _route: ActivatedRoute, private _JobsService: JobsService) {
     this._route.params.subscribe(params => {
@@ -19,7 +19,7 @@ export class JobsComponent implements OnInit {
 
   ngOnInit() {
     this._JobsService.getAllJobs().subscribe(data => {
-      this.jobs = data;
+      this.jobs = data.job;
       console.log(data);
     });
 
