@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { JobsService } from './jobs/jobs.service';
 import { HttpModule } from '@angular/http';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -22,6 +23,7 @@ import { HttpModule } from '@angular/http';
     UsersComponent,
     JobsComponent,
     CompanyComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

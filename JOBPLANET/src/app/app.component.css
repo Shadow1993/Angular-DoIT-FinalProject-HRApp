@@ -1,0 +1,25 @@
+.nav { 
+    font-family: sans-serif;
+    height: 200px;
+    background-color: rgb(17, 17, 39);
+}
+
+.nav li {
+    float: left;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    list-style-type:none;
+}
+
+.nav li:hover {
+    color: yellow;
+}
+
+.main {
+    font-size: 80px;
+    color: white;
+    top: 40px;
+    left: 500px;
+    position: absolute;
+}
