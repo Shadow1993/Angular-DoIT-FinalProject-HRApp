@@ -14,6 +14,7 @@ import { LoginModule } from './login/login.module';
 import { JobsService } from './jobs/jobs.service';
 import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 
 
@@ -24,6 +25,7 @@ import { RegisterComponent } from './register/register.component';
     JobsComponent,
     CompanyComponent,
     RegisterComponent,
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,

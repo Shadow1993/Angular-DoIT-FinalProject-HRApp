@@ -62,7 +62,7 @@
     </div>
     <br>
     <span id="login">
-      <button class="socialmedia" type="submit" [disabled]="!logInForm.valid">
+      <button class="socialmedia" type="submit" [disabled]="!logInForm.valid" (click)='login()'>
         Log In
       </button>
     </span>
