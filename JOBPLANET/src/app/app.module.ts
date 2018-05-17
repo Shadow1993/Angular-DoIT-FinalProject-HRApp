@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { JobsService } from './jobs/jobs.service';
 import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationService } from './authentication/authentication.service';
+import { Http } from '@angular/http';
 
 
 
@@ -29,11 +32,12 @@ import { AuthenticationComponent } from './authentication/authentication.compone
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    Http,
     AppRoutingModule,
-    LoginModule,
-    HttpModule
+    LoginModule
   ],
-  providers: [UserService, CompanyService, JobsService],
+  providers: [UserService, CompanyService, JobsService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
