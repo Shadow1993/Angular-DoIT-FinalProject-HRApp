@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { JobsComponent } from './jobs/jobs.component';
-import { CompanyComponent } from './company/company.component';
 import { UserService } from './users/user.service';
 import { CompanyService } from './company/company.service';
 import { LoginComponent } from './login/login.component';
@@ -17,28 +16,29 @@ import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationService } from './authentication/authentication.service';
+import { CompanyModule } from './company/company.module';
 // import { Http } from '@angular/http';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UsersComponent,
-    JobsComponent,
-    CompanyComponent,
-    RegisterComponent,
-    AuthenticationComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    HttpModule,
-    // Http,
-    AppRoutingModule,
-    LoginModule
-  ],
-  providers: [UserService, CompanyService, JobsService, AuthenticationService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        UsersComponent,
+        JobsComponent,
+        RegisterComponent,
+        AuthenticationComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        HttpModule,
+        // Http,
+        AppRoutingModule,
+        LoginModule,
+        CompanyModule
+    ],
+    providers: [UserService, JobsService, AuthenticationService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
