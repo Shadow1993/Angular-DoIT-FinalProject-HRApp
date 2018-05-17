@@ -1,7 +1,8 @@
-<table>
-  <tbody>
-    <tr *ngFor='let job of jobs'>
-      <td>{{job.job[0]}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="jobs" *ngFor = "let j of jobs">
+  <h1>{{j.name}}</h1>
+  <h2>{{j.categories}} {{j.city}}</h2>
+  <p>{{j.description}}</p>
+  <button>Save job</button>
+  <button>email</button>
+  <button>More..</button>
+</div>
