@@ -17,7 +17,7 @@ import { HttpModule } from '@angular/http';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationService } from './authentication/authentication.service';
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
 
 
 
@@ -33,7 +33,8 @@ import { Http } from '@angular/http';
   imports: [
     BrowserModule,
     HttpClientModule,
-    Http,
+    HttpModule,
+    // Http,
     AppRoutingModule,
     LoginModule
   ],
