@@ -29,14 +29,14 @@
     <br>
     <!-- div for email and password formGroup nested input element -->
     <div formGroupName="emailPwdGroup">
-      <div class="formInput" [ngClass]="{'has-error': emailMessage }">
+      <!-- <div class="formInput" [ngClass]="{'has-error': emailMessage }">
         <label for="email">E-mail:</label>
         <br>
         <input id="emailID" type="email" placeholder="E-mail address" formControlName="email">
         <span *ngIf="emailMessage">
           {{ emailMessage }}
         </span>
-      </div>
+      </div> -->
       <br>
 
       <div class="formInput" [ngClass]="{'has-error': passwordMessage }">
@@ -51,7 +51,7 @@
     </div>
     <br>
     <span id="login">
-      <button class="socialmedia" type="submit" [disabled]="!logInForm.valid" (click)='login()'>
+      <button class="socialmedia" type="submit"> <!--[disabled]="!logInForm.valid" -->
         Log In
       </button>
     </span>

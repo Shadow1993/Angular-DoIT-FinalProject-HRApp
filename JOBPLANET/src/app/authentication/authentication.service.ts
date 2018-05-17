@@ -9,13 +9,15 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
   
       login(username: string, password: string) {
-          return this.http.post<any>('doit-hr-app.herokuapp.com/api/auth/Login', { username: username, password: password })
+          return this.http.post<any>('doit-hr-app.herokuapp.com/api/auth/login', { username: username, password: password })
               .map(user => {
                   if (user && user.token) {
                       localStorage.setItem('currentUser', JSON.stringify(user));
                   }
-  
+                  console.log(user)
                   return user;
+                  ;
+                  
               });
       }
   

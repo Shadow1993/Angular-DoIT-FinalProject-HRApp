@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
   private validationMsgPassword = {
     required: 'Please enter your password!',
-    minlength: 'Password is at least 5 characters!'
+    minlength: 'Password is at least 3 characters!'
 
   }    
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       emailPwdGroup: this._fb.group({
         email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
-        password: ['', [Validators.required, Validators.minLength(5)]],
+        password: ['', [Validators.required, Validators.minLength(3)]],
       }),
       submit: ''
 
