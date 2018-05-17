@@ -1,0 +1,24 @@
+.registry-form{
+    display: flex;
+    flex-wrap: wrap;
+    width:200px;
+    left: 50%;
+    bottom: 50%;
+    margin: 0 auto;
+}
+
+input {
+    margin-top: 3px;
+}
+
+select{
+    margin-top: 3px;
+}
+
+textarea{
+    margin-top: 3px;
+}
+
+input::placeholder {
+    padding-left:2px;
+}
