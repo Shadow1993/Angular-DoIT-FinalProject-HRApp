@@ -1,5 +1,5 @@
 <form novalidate (ngSubmit)="save()" [formGroup]="logInForm">
-  <fieldset> 
+  <fieldset>
     <button type="button" class="socialmedia">Login with Facebook</button>
     <br>
     <br>
@@ -27,38 +27,27 @@
       </span>
     </div>
     <br>
-    <!-- div for email input element -->
-    <div class="formInput" [ngClass]="{'has-error': (logInForm.get('email').touched || logInForm.get('email').dirty) && !logInForm.get('email').valid } ">
-      <label for="email">E-mail:</label>
+    <!-- div for email and password formGroup nested input element -->
+    <div formGroupName="emailPwdGroup">
+      <div class="formInput" [ngClass]="{'has-error': emailMessage }">
+        <label for="email">E-mail:</label>
+        <br>
+        <input id="emailID" type="email" placeholder="E-mail address" formControlName="email">
+        <span *ngIf="emailMessage">
+          {{ emailMessage }}
+        </span>
+      </div>
       <br>
-      <input id="emailID" type="email" placeholder="E-mail address" formControlName="email">
-      <span *ngIf="(logInForm.get('email').touched || logInForm.get('email').dirty) && logInForm.get('email').errors">
-        <span *ngIf="logInForm.get('email').errors.required">
-          Please enter your e-mail address!
+
+      <div class="formInput" [ngClass]="{'has-error': passwordMessage }">
+
+        <label for="password">Password:</label>
+        <br>
+        <input id="pwd" type="password" formControlName="password">
+        <span *ngIf="passwordMessage">
+          {{ passwordMessage }}
         </span>
-
-        <span *ngIf="logInForm.get('email').errors.pattern">
-          Enter a valid e-mail address!
-        </span>
-
-      </span>
-    </div>
-    <br>
-
-    <div class="formInput" [ngClass]="{'has-error': logInForm.get('password').touched || logInForm.get('password').dirty }">
-
-      <label for="password">Password:</label>
-      <br>
-      <input id="pwd" type="password" formControlName="password">
-      <span *ngIf="(logInForm.get('password').touched || logInForm.get('password').dirty) && logInForm.get('password').errors">
-        <span *ngIf="logInForm.get('password').errors.required">
-          Please enter your password!
-        </span>
-        <span *ngIf="logInForm.get('password').errors.minlength">
-          Password is at least 5 characters!
-        </span>
-
-      </span>
+      </div>
     </div>
     <br>
     <span id="login">
