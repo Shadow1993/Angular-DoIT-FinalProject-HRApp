@@ -1,13 +1,16 @@
 <p>This is Admin page </p>
-
-<select class="admin" name="Back Office" (change)="navigateTo(value)"> 
-  <option name="Back Office">Back Office</option>
-  <option value="users">Users</option>
-  <option value="jobs">Jobs</option>
-  <option value="alerts">Alerts</option>
-  <option value="email-form">Send e-mail</option>
-
-</select>
 <div>
-<router-outlet></router-outlet>
+  <label> Back Office </label>
+  <select (change)="onChange($event)" class="admin" name="Back Office">
+    <option name="dropdownMenu">Select from list</option>
+    <option *ngFor="let opt of options" [value]="opt">
+      {{ opt }}
+    </option>
+
+  </select>
 </div>
+<!-- <div *ngIf="currentNav === 'Send message'"> -->
+    <!-- <app-email-form></app-email-form> -->
+<!-- </div> -->
+
+<router-outlet></router-outlet>
