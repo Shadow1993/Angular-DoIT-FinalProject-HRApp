@@ -10,7 +10,7 @@
 
     <!-- separate div for each input element -->
     <div class="formInput" [ngClass]="{'has-error': (logInForm.get('name').touched || logInForm.get('name').dirty) && !logInForm.get('name').valid } ">
-      <label for="name">Name:</label>
+      <label for="name">User name:</label>
       <br>
       <input id="name" type="text" placeholder="Your Name" formControlName="name" method='GET'>
       <span *ngIf="(logInForm.get('name').touched || logInForm.get('name').dirty) && logInForm.get('name').errors">

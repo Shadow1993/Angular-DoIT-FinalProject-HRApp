@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { CompanyModule } from './company/company.module';
+import { SuperuserComponent } from './superuser/superuser.component';
+import { EmailFormComponent } from './superuser/email-form/email-form.component';
 // import { Http } from '@angular/http';
 
 
@@ -28,6 +30,8 @@ import { CompanyModule } from './company/company.module';
         JobsComponent,
         RegisterComponent,
         AuthenticationComponent,
+        SuperuserComponent,
+        EmailFormComponent,
     ],
     imports: [
         BrowserModule,

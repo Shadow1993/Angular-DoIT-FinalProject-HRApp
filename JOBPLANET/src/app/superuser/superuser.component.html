@@ -1,0 +1,13 @@
+<p>This is Admin page </p>
+
+<select class="admin" name="Back Office" (change)="navigateTo(value)"> 
+  <option name="Back Office">Back Office</option>
+  <option value="users">Users</option>
+  <option value="jobs">Jobs</option>
+  <option value="alerts">Alerts</option>
+  <option value="email-form">Send e-mail</option>
+
+</select>
+<div>
+<router-outlet></router-outlet>
+</div>
