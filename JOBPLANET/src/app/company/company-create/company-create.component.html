@@ -1,30 +1,86 @@
-<div>
-    <div class="formInput">
-        <label for="companyName">Company Name: </label>
-        <input type="text" id="companyName">
+<form novalidate [formGroup]="createCompanyForm" (submit)="onSubmit()">
+    <h3>Create a New Company: </h3>
+    <div class="form-input-group">
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" formControlName="name">
+        <div *ngIf="(createCompanyForm.get('name').errors && createCompanyForm.get('name').touched)" class="formErrors">
+            <span *ngIf="(createCompanyForm.get('name').errors.required)">
+                Please enter your companies Name.
+            </span>
+            <span *ngIf="(createCompanyForm.get('name').errors.minlength)">
+                Must be at least 4 characters long.
+            </span>
+        </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="description">Description: </label>
+        <input type="text" name="description" id="description" formControlName="description">
+        <div *ngIf="(createCompanyForm.get('description').errors && createCompanyForm.get('description').touched)" class="formErrors">
+            <span *ngIf="(createCompanyForm.get('description').errors.required)">
+                Please enter a description for your company.
+            </span>
+            <span *ngIf="(createCompanyForm.get('description').errors.minlength)">
+                Must be at least 10 characters long.
+            </span>
+        </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="city">City: </label>
+        <input type="text" name="city" id="city" formControlName="city">
+        <div *ngIf="(createCompanyForm.get('city').errors && createCompanyForm.get('city').touched)" class="formErrors">
+                <span *ngIf="(createCompanyForm.get('city').errors.required)">
+                    Please enter a city for your company.
+                </span>
+                <span *ngIf="(createCompanyForm.get('city').errors.minlength)">
+                    Must be at least 5 characters long.
+                </span>
+            </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="country">Country: </label>
+        <input type="text" name="country" id="country" formControlName="country">
+        <div *ngIf="(createCompanyForm.get('country').errors && createCompanyForm.get('country').touched)" class="formErrors">
+                <span *ngIf="(createCompanyForm.get('country').errors.required)">
+                    Please enter a country for your company.
+                </span>
+                <span *ngIf="(createCompanyForm.get('country').errors.minlength)">
+                    Must be at least 5 characters long.
+                </span>
+            </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="phone">Phone: </label>
+        <input type="text" name="phone" id="phone" formControlName="phone">
+        <div *ngIf="(createCompanyForm.get('phone').errors && createCompanyForm.get('phone').touched)" class="formErrors">
+                <span *ngIf="(createCompanyForm.get('phone').errors.required)">
+                    Please enter a phone for your company.
+                </span>
+            </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="email">E-mail: </label>
+        <input type="text" name="email" id="email" formControlName="email">
+        <div *ngIf="(createCompanyForm.get('email').errors && createCompanyForm.get('email').touched)" class="formErrors">
+                <span *ngIf="(createCompanyForm.get('email').errors.required)">
+                    Please enter an email for your company.
+                </span>
+                <span *ngIf="(createCompanyForm.get('email').errors.email && !createCompanyForm.get('email').errors.required)">
+                    This doesn't appear to be a valid e-mail address
+                </span>
+            </div>
     </div>
-    <div class="formInput">
-        <label for="companyName"></label>
-        <input type="text" id="companyName">
+    <div class="form-input-group">
+        <label for="website">Website: </label>
+        <input type="text" name="website" id="website" formControlName="website">
+        <div *ngIf="(createCompanyForm.get('website').errors && createCompanyForm.get('website').touched)" class="formErrors">
+                <span *ngIf="(createCompanyForm.get('website').errors.required)">
+                    Please enter a website for your company.
+                </span>
+            </div>
     </div>
-</div>
+
+    <input type="submit" value="Create Company" [disabled]="!createCompanyForm.valid">
+
+</form>
+
+{{createCompanyForm.value | json}} {{createCompanyForm.valid}}
