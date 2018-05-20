@@ -7,10 +7,6 @@
     margin: 0 auto;
 }
 
-input {
-    margin-top: 3px;
-}
-
 select{
     margin-top: 3px;
 }
@@ -21,4 +17,12 @@ textarea{
 
 input::placeholder {
     padding-left:2px;
+}
+
+.miniFormWrapper{
+    margin-top:6px;
+}
+
+label{
+    font-weight: bold;
 }
