@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { CompanyModule } from './company/company.module';
 import { SuperuserComponent } from './superuser/superuser.component';
 import { EmailFormComponent } from './superuser/email-form/email-form.component';
+import { JwtInterceptor } from './authentication/jwt.interceptor';
 // import { Http } from '@angular/http';
 
 
@@ -42,7 +43,11 @@ import { EmailFormComponent } from './superuser/email-form/email-form.component'
         LoginModule,
         CompanyModule
     ],
-    providers: [UserService, JobsService, AuthenticationService],
+    providers: [UserService, JobsService, AuthenticationService, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true
+      }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

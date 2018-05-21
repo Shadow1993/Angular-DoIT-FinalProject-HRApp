@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersComponent } from '../users/users.component';
 import { AuthenticationService } from './../authentication/authentication.service'
 
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   user: UsersComponent = new UsersComponent();
   emailMessage: string;
   passwordMessage: string;
+  returnUrl: string;
   // importing validation messg from html to component, no longer in html!
   private validationMsgEmail = {
     required: 'Please enter your e-mail address!',
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  constructor(private _fb: FormBuilder, private _auth:AuthenticationService) {  }
+  constructor(private _fb: FormBuilder, private _auth:AuthenticationService, private router: Router, private route: ActivatedRoute) {  }
 
   ngOnInit() {
     this.logInForm = this._fb.group({
@@ -48,6 +50,8 @@ export class LoginComponent implements OnInit {
     const passwordControl = this.logInForm.get('emailPwdGroup.password');
     passwordControl.valueChanges.subscribe(value =>
       this.setPasswordMessage(passwordControl));
+    
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 
 
   }
@@ -76,11 +80,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(`AAAAAAAAAAAAAAAAAAAAa`);
-    console.log(this.logInForm.value.name);
-    console.log(this.logInForm.status);
+    // console.log(this.logInForm.value.name);
+    // console.log(this.logInForm.status);
     
-    this._auth.login(this.logInForm.value.name, this.logInForm.value.emailPwdGroup.password);
+    this._auth.login(this.logInForm.value.name, this.logInForm.value.emailPwdGroup.password)
+    .subscribe(
+      data => {
+          this.router.navigate([this.returnUrl]);
+      });
   }
 
 }
