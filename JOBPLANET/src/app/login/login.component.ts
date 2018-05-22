@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   // importing validation messg from html to component, no longer in html!
   private validationMsgUsername = {
     required: 'Please enter your username!',
-    pattern: 'Enter a valid username!'
+    minlength: 'Username must be at least 3 characters long!'
   }
   private validationMsgPassword = {
     required: 'Please enter your password!',
@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.logInForm = this._fb.group({
       // name: { value: 'n/a', disabled: true }, ako hocemo default vrednost i da polje ne bude aktivno ni zahtevano za submit
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      emailPwdGroup: this._fb.group({
+      userGroup: this._fb.group({
+        username: ['', [Validators.required, Validators.minLength(3)]],
+
         // email: ['temp@temp.com', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
         password: ['', [Validators.required, Validators.minLength(3)]],
       }),
@@ -42,12 +43,12 @@ export class LoginComponent implements OnInit {
 
     });
 
-    const usernameControl = this.logInForm.get('username');
+    const usernameControl = this.logInForm.get('userGroup.username');
     // watcher for value changes in email with function setMessage
     usernameControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setUsernameMessage(usernameControl));
 
-    const passwordControl = this.logInForm.get('emailPwdGroup.password');
+    const passwordControl = this.logInForm.get('userGroup.password');
     passwordControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setPasswordMessage(passwordControl));
     
@@ -83,17 +84,17 @@ export class LoginComponent implements OnInit {
     // console.log(this.logInForm.value.name);
     // console.log(this.logInForm.status);
     
-    this._auth.login(this.logInForm.value.username, this.logInForm.value.emailPwdGroup.password)
+    this._auth.login(this.logInForm.value.userGroup.username, this.logInForm.value.userGroup.password)
     .subscribe(
       data => {
           this.router.navigate([this.returnUrl]);
       });
   }
 
-  // isLoggedIn() {
-  //   if (this._auth.adminLoggedIn('admin')) {
-  //     return true;
-  //   }
-  // }
+  isLoggedIn() {
+    if (this._auth.adminLoggedIn('admin')) {
+      return true;
+    }
+  }
 
 }

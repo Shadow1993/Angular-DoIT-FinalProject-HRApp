@@ -9,26 +9,21 @@
     <br>
 
     <!-- separate div for each input element -->
-    <div class="formInput" [ngClass]="{'has-error': usernameMessage } ">
+    <!-- <div class="formInput" [ngClass]="{'has-error': usernameMessage } ">
       <label for="username">Username:</label>
       <br>
       <input id="username" type="text" placeholder="Your username" formControlName="username" method='GET'>
-      <!-- <span *ngIf="(logInForm.get('username').touched || logInForm.get('username').dirty) && logInForm.get('username').errors">
-        <span *ngIf="logInForm.get('username').errors.required">
-          Please enter your username!
-        </span> -->
-        <br>
-
+    
         <span *ngIf="usernameMessage">
           {{ usernameMessage }}
         </span>
-        <br>
+        
 
-      <!-- </span> -->
+      
     </div>
-    <br>
+    <br> -->
     <!-- div for email and password formGroup nested input element -->
-    <div formGroupName="emailPwdGroup">
+    <div formGroupName="userGroup">
       <!-- <div class="formInput" [ngClass]="{'has-error': emailMessage }">
         <label for="email">E-mail:</label>
         <br>
@@ -37,7 +32,20 @@
           {{ emailMessage }}
         </span>
       </div> -->
+      <div class="formInput" [ngClass]="{'has-error': usernameMessage }">
+        <label for="username">Username:</label>
+        <br>
+        <input id="username" type="text" formControlName="username">
+      
+          <span *ngIf="usernameMessage">
+            {{ usernameMessage }}
+          </span>
+          
+  
+        
+      </div>
       <br>
+  
 
       <div class="formInput" [ngClass]="{'has-error': passwordMessage }">
 
