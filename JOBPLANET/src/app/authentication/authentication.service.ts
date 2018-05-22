@@ -34,4 +34,24 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
     }
 
+    userLoggedIn(role) {
+        if (role === 'client') {
+            return true;
+        }
+    }
+
+    adminLoggedIn(role) {
+        if (role === 'admin') {
+            return true;
+        }
+    }
+
+    modLoggedIn(role) {
+        if (role === 'mod') {
+            return true;
+        }
+    }
+
+
+
 }

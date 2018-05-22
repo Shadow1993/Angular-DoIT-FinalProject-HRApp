@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { JobsService } from './jobs/jobs.service';
 import { HttpModule } from '@angular/http';
-import { RegisterComponent } from './register/register.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { CompanyModule } from './company/company.module';
@@ -23,6 +22,7 @@ import { JwtInterceptor } from './authentication/jwt.interceptor';
 import { AlertsComponent } from './superuser/alerts/alerts.component';
 import { UserslistComponent } from './superuser/userslist/userslist.component';
 import { JobslistComponent } from './superuser/jobslist/jobslist.component';
+import { RegisterModule } from './register/register.module';
 // import { Http } from '@angular/http';
 
 
@@ -32,7 +32,6 @@ import { JobslistComponent } from './superuser/jobslist/jobslist.component';
         AppComponent,
         UsersComponent,
         JobsComponent,
-        RegisterComponent,
         AuthenticationComponent,
         SuperuserComponent,
         EmailFormComponent,
@@ -47,7 +46,8 @@ import { JobslistComponent } from './superuser/jobslist/jobslist.component';
         // Http,
         AppRoutingModule,
         LoginModule,
-        CompanyModule
+        CompanyModule,
+        RegisterModule
     ],
     providers: [UserService, JobsService, AuthenticationService, {
         provide: HTTP_INTERCEPTORS,
