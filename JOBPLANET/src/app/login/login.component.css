@@ -1,7 +1,7 @@
 
 fieldset{
     display: flex;
-    flex-wrap: no-wrap;
+    flex-wrap: wrap;
     width:50%;
     left: 50%;
     bottom: 50%;
@@ -22,10 +22,15 @@ input#name, input#emailID, input#pwd {
 }
 div.formInput {
     display: block;
-    margin: 0 auto;
     text-align: center;
     
 }
+div.formInput>label {
+    position: relative;
+    
+}
+
+
 .formInput>span {
    text-align: center;
     color: red;

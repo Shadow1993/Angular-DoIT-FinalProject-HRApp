@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../users/user.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-userslist',
@@ -8,13 +11,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserslistComponent implements OnInit {
 
-  
-  constructor(private http: HttpClient) { }
+  public id;
+  public listOfUsers;
 
-  
-
-  ngOnInit() {
+  constructor(private _route: ActivatedRoute,
+    private _users: UserService, private http: HttpClient) {
+    this._route.params.subscribe(params => {
+      this.id = params['id'];
+      
+    })
 
   }
 
-}
+  
+  ngOnInit() {
+    this._users.getAll().subscribe(data => {
+      this.listOfUsers = data;
+      console.log(data);
+
+    });
+
+  }
+}  

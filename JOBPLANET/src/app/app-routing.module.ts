@@ -37,7 +37,8 @@ const routes = [
                 component:  EmailFormComponent 
             },
             {
-                path: 'jobslist', redirectTo: 'jobs', pathMatch: 'full'
+                path: 'jobslist', 
+                component:  JobslistComponent
                 
             },
 
