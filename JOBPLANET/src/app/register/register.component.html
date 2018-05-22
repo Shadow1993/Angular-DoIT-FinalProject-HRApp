@@ -1,72 +1,133 @@
 <div class="registry-form">
-  <form>
+  <form novalidate [FormGroup]="createRegisterForm" (submit)="onSubmit()">
   <div class="miniFormWrapper">
   <label for="name">Name</label>
-  <input type="text" placeholder="Name" id="name">
+  <input type="text" placeholder="Name" id="name" formControlName="name">
+  <div *ngIf="(createRegistryForm.get('name').errors && createRegistryForm.get('name').touched)">
+    <span></span>
+    <span></span>
+  </div>
   </div>
   <div class="miniFormWrapper">
   <label for="lastName">Last Name</label>
-  <input type="text" placeholder="Last Name" id="lastName">
-  </div>
+  <input type="text" placeholder="Last Name" id="lastName" formControlName="lastName">
+  <div>
+      <span></span>
+      <span></span>
+    </div>
+</div>
   <div class="miniFormWrapper">
   <label for="username">Userame</label>
-  <input type="text" placeholder="Username" id="username">
-  </div>
+  <input type="text" placeholder="Username" id="username" formControlName="username">
+  <div>
+      <span></span>
+      <span></span>
+    </div>
+</div>
   <div class="miniFormWrapper">
   <label for="password">Password</label>
-  <input type="text" placeholder="Password" id="password">
+  <input type="text" placeholder="Password" id="password" formControlName="password">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
-  <label for="e-mail">E-mail</label>
-  <input type="text" placeholder="E-mail" id="e-mail">
+  <label for="email">E-mail</label>
+  <input type="text" placeholder="E-mail" id="email" formControlName="email">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="status">Status</label>
-  <input type="text" placeholder="Status" id="status">
+  <input type="text" placeholder="Status" id="status" formControlName="status">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="city">City</label>
-  <input type="text" placeholder="City" id="city">
+  <input type="text" placeholder="City" id="city" formControlName="city">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="country">Country</label>
-  <input type="text" placeholder="Country" id="country">
+  <input type="text" placeholder="Country" id="country" formControlName="country">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="locationChange">Location Change</label>
-  <select id="locationChange">
+  <select id="locationChange" formControlName="locationChange">
     <option value="Location Change" disabled>Location Change</option>
     <option value="Yes">Yes</option>
     <option value="No">No</option>
   </select>
-  </div>
+  <div>
+      <span></span>
+      <span></span>
+  </div>  
+</div>
   <div class="miniFormWrapper">
   <label for="jobType">Job Type</label>
-  <input type="text" placeholder="Job Type" id="jobType">
+  <input type="text" placeholder="Job Type" id="jobType" formControlName="jobType">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="experience">Experience</label>
-  <input type="text" placeholder="Experience" id="experience">
+  <input type="text" placeholder="Experience" id="experience" formControlName="experience">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="gender">Gender</label>
-  <select id="gender">
+  <select id="gender" formControlName="gender">
     <option value="Gender" disabled>Gender</option>
     <option value="Male">Male</option>
     <option value="Female">Female</option>
   </select>
-  </div>
+  <div>
+      <span></span>
+      <span></span>
+  </div>  
+</div>
   <div class="miniFormWrapper">
   <label for="dateOfBirth">Date of Birth</label>
-  <input type="text" placeholder="Date of Birth" id="dateOfBirth">
+  <input type="text" placeholder="Date of Birth" id="dateOfBirth" formControlName="dateOfBirth">
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="additionalInfo">Additional Info</label>
-  <textarea type="text" placeholder="Additional Info" id="additionalInfo"></textarea>
+  <textarea type="text" placeholder="Additional Info" id="additionalInfo" formControlName="additionalInfo"></textarea>
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
   <div class="miniFormWrapper">
   <label for="role">Role</label>
-  <input type="text" placeholder="Role" id="role">
+  <input type="text" placeholder="Role" id="role" formControlName="role"> 
+  <div>
+      <span></span>
+      <span></span>
   </div>
+</div>
+  <div><input class="miniFormWrapper registerButton" type="submit" value="Register now! And get a free pony!!!"></div>
 </form>
 </div>
