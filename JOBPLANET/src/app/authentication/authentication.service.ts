@@ -20,12 +20,11 @@ export class AuthenticationService {
             map(user => {
                 console.log(user);
 
-                if (user && user.token) {
+                if (user && user.msg.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-                console.log(user)
                 return user;
-                ;
+                
 
             }),
             catchError(error => of(console.log(error))));
@@ -34,5 +33,25 @@ export class AuthenticationService {
     logout() {
         localStorage.removeItem('currentUser');
     }
+
+    userLoggedIn(role) {
+        if (role === 'client') {
+            return true;
+        }
+    }
+
+    adminLoggedIn(role) {
+        if (role === 'admin') {
+            return true;
+        }
+    }
+
+    modLoggedIn(role) {
+        if (role === 'mod') {
+            return true;
+        }
+    }
+
+
 
 }
