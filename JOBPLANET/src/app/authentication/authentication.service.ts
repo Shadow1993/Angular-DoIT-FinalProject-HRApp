@@ -20,12 +20,11 @@ export class AuthenticationService {
             map(user => {
                 console.log(user);
 
-                if (user && user.token) {
+                if (user && user.msg.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-                console.log(user)
                 return user;
-                ;
+                
 
             }),
             catchError(error => of(console.log(error))));
