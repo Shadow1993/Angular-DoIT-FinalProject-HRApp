@@ -8,6 +8,9 @@ import { AuthGuard } from './authentication/auth.guard';
 import { CompanyComponent } from './company/company.component';
 import { SuperuserComponent } from './superuser/superuser.component';
 import { EmailFormComponent } from './superuser/email-form/email-form.component';
+import { AlertsComponent } from './superuser/alerts/alerts.component';
+import { JobslistComponent } from './superuser/jobslist/jobslist.component';
+import { UserslistComponent } from './superuser/userslist/userslist.component';
 
 const routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,11 +22,30 @@ const routes = [
         path: 'superuser',
         component: SuperuserComponent,
         children: [
+            {
+                path: '', redirectTo: 'superuser', pathMatch: 'full'
+               
+            },
+        
+            {
+                path: 'alerts',
+                component:  AlertsComponent 
+            },
 
             {
                 path: 'email-form',
                 component:  EmailFormComponent 
             },
+            {
+                path: 'jobslist', redirectTo: 'jobs', pathMatch: 'full'
+                
+            },
+
+            {
+                path: 'userslist',
+                component:  UserslistComponent 
+            },
+
         ]
     }
 ];

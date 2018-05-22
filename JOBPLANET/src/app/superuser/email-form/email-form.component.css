@@ -1,3 +1,10 @@
-p{
-    color: black;
+
+
+fieldset{
+    display: flex;
+    flex-wrap: no-wrap;
+    width:50%;
+    left: 50%;
+    bottom: 50%;
+    margin: 0 auto;
 }

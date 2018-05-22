@@ -20,6 +20,9 @@ import { CompanyModule } from './company/company.module';
 import { SuperuserComponent } from './superuser/superuser.component';
 import { EmailFormComponent } from './superuser/email-form/email-form.component';
 import { JwtInterceptor } from './authentication/jwt.interceptor';
+import { AlertsComponent } from './superuser/alerts/alerts.component';
+import { UserslistComponent } from './superuser/userslist/userslist.component';
+import { JobslistComponent } from './superuser/jobslist/jobslist.component';
 // import { Http } from '@angular/http';
 
 
@@ -33,6 +36,9 @@ import { JwtInterceptor } from './authentication/jwt.interceptor';
         AuthenticationComponent,
         SuperuserComponent,
         EmailFormComponent,
+        AlertsComponent,
+        UserslistComponent,
+        JobslistComponent,
     ],
     imports: [
         BrowserModule,

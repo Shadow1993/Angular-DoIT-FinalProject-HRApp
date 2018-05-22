@@ -2,7 +2,7 @@
 <div>
   <label> Back Office </label>
   <select (change)="onChange($event)" class="admin" name="Back Office">
-    <option name="dropdownMenu">Select from list</option>
+    <option name="dropdownMenu" disabled>Select from list</option>
     <option *ngFor="let opt of options" [value]="opt">
       {{ opt }}
     </option>

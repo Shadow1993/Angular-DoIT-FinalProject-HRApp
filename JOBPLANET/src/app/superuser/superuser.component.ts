@@ -20,15 +20,29 @@ export class SuperuserComponent implements OnInit {
   }
 
   ngOnInit() {
-
+  
   }
   navigateTo() {
-    // if (value) {
+    if (this.currentNav == 'Send message') {
       this._router.navigate(['email-form'], { relativeTo: this.route });
-    // }
-    return false;
-  }
+    }
+    // return false;
+  else if (this.currentNav == 'Alerts') {
+    this._router.navigate(['alerts'], { relativeTo: this.route });
 
+    }
+    else if (this.currentNav == 'Jobs') {
+      this._router.navigate(['jobs'] );
+  
+    }
+    else if (this.currentNav == 'Users') {
+      this._router.navigate(['userslist'], { relativeTo: this.route });
+  
+    }
+
+  
+    
+  }
   onChange(e) {
     console.log(e);
     this.currentNav = e.target.value;
