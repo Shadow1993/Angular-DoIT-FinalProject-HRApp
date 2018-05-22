@@ -1,5 +1,5 @@
 <div class="registry-form">
-  <form novalidate [FormGroup]="createRegisterForm" (submit)="onSubmit()">
+  <form novalidate [formGroup]="createRegisterForm" (submit)="onSubmit()">
   <div class="miniFormWrapper">
   <label for="name">Name</label>
   <input type="text" placeholder="Name" id="name" formControlName="name">
