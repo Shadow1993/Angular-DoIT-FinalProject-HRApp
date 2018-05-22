@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       this.setEmailMessage(emailControl));
 
     const passwordControl = this.logInForm.get('emailPwdGroup.password');
-    passwordControl.valueChanges.subscribe(value =>
+    passwordControl.valueChanges.debounceTime(1000).subscribe(value =>
       this.setPasswordMessage(passwordControl));
     
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -88,6 +88,12 @@ export class LoginComponent implements OnInit {
       data => {
           this.router.navigate([this.returnUrl]);
       });
+  }
+
+  isLoggedIn() {
+    if (this._auth.adminLoggedIn('admin')) {
+      return true;
+    }
   }
 
 }
