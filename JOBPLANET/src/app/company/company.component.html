@@ -1,2 +1,2 @@
-<app-company-create></app-company-create>
-<app-company-display></app-company-display>
+<app-company-create *ngIf="!hasCompany"></app-company-create>
+<app-company-display *ngIf="hasCompany"></app-company-display>
