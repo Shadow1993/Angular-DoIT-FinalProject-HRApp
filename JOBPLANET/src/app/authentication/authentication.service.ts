@@ -41,7 +41,7 @@ export class AuthenticationService {
     }
 
     adminLoggedIn(role) {
-        if (role === 'admin') {
+        if (role==='admin') {
             return true;
         }
     }
@@ -51,7 +51,7 @@ export class AuthenticationService {
             return true;
         }
     }
-
+    
 
 
 }
