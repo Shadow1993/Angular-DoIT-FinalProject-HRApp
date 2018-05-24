@@ -7,7 +7,7 @@
     <li>Features</li>
     <li *ngIf='!isLoggedIn' class="login" [routerLink]="['/login']">Login</li>
     <!-- <li *ngIf='isLoggedIn'>{{currentUser.msg.name}}</li> -->
-    <li *ngIf='isLoggedIn' class="login" [routerLink]="['/login']">Logout</li>
+    <li *ngIf='isLoggedIn' class="login" (click)="onLogOut()">Logout</li>
     <li [routerLink]="['/register']">Register</li>
     <li [routerLink]="['/superuser']">Super User</li>
 </ul>
