@@ -1,4 +1,4 @@
-.nav { 
+.nav {
     font-family: sans-serif;
     height: 200px;
     background-color: rgb(13, 13, 73);
@@ -9,7 +9,7 @@
     cursor: pointer;
     color: white;
     padding: 10px;
-    list-style-type:none;
+    list-style-type: none;
 }
 
 .nav li:hover {
@@ -23,3 +23,5 @@
     left: 500px;
     position: absolute;
 }
+
+

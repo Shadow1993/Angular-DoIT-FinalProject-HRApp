@@ -5,12 +5,12 @@
     <li>Post a Job</li>
     <li>Pages</li>
     <li>Features</li>
-    <li *ngIf='currentUser'>{{currentUser.msg.name}}</li>
-    <li class="login" [routerLink]="['/login']">Login</li>
-    <!-- <li class="login" [routerLink]="['/login']">Logout</li> -->
+    <li *ngIf='!isLoggedIn' class="login" [routerLink]="['/login']">Login</li>
+    <!-- <li *ngIf='isLoggedIn'>{{currentUser.msg.name}}</li> -->
+    <li *ngIf='isLoggedIn' class="login" [routerLink]="['/login']">Logout</li>
     <li [routerLink]="['/register']">Register</li>
     <li [routerLink]="['/superuser']">Super User</li>
-
 </ul>
+
 <p class="main">JobPlanet</p>
 <router-outlet></router-outlet>

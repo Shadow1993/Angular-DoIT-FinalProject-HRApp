@@ -91,10 +91,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  isLoggedIn() {
-    if (this._auth.adminLoggedIn('admin')) {
-      return true;
-    }
-  }
+  // isLoggedIn() {
+  //   if (this._auth.adminLoggedIn('admin')) {
+  //     return true;
+  //   }
+  // }
 
 }
