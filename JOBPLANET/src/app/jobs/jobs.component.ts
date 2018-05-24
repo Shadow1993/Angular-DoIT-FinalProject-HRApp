@@ -20,7 +20,7 @@ export class JobsComponent implements OnInit {
   ngOnInit() {
     this._JobsService.getAllJobs().subscribe(data => {
       this.jobs = data.job;
-      console.log(data);
+      // console.log(data);
     });
 
   }

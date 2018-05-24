@@ -32,7 +32,7 @@ export class SuperuserComponent implements OnInit {
 
     }
     else if (this.currentNav == 'Jobs') {
-      this._router.navigate(['jobs'] );
+      this._router.navigate(['jobslist'], { relativeTo: this.route } );
   
     }
     else if (this.currentNav == 'Users') {

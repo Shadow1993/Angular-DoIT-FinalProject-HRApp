@@ -1,3 +1,28 @@
-<p>
-  jobslist works!
-</p>
+<h2>List of all jobs </h2>
+<h3>Filter by:</h3>
+<fieldset>
+<label>Company name
+  <input type="text" placeholder="Enter the name of company">
+</label> 
+<button type="button" id="company">Filter</button><br>
+<br>
+
+<label>HR Managers
+  <input type="text" placeholder="Enter the role">
+</label>
+<button type="button" id="managers">Filter</button><br>
+<br>
+
+<label>Keywords
+  <input type="text" placeholder="Enter the keyword">
+  <button type="button" (click) = 'filterJobsByKeywords()'>Filter</button><br>
+
+
+</label>
+</fieldset>
+<br>
+
+<div>
+  <app-jobs></app-jobs>
+</div>
+
