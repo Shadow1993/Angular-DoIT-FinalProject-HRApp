@@ -1,4 +1,34 @@
 .formErrors {
     color : red;
     font-weight: bold;
+    min-width: 300px;
+    max-width: 512px;
+}
+.companyCreate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+label {
+    display: block;
+}
+
+input {
+    padding: 5px;
+    border-radius: 5px;
+    display: block;
+    min-width: 300px;
+    max-width: 512px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+}
+input[type="submit"]:disabled {
+    background-color: lightblue;
+    color: grey;
 }

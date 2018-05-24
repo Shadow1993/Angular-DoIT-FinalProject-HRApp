@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
+import ICompany from './interfaces/ICompany';
+
 
 const user = JSON.parse(localStorage.getItem('currentUser'));
 const API_URI = 'https://doit-hr-app.herokuapp.com/api/companies/';
@@ -21,7 +23,7 @@ export class CompanyService {
         }
     }
 
-    hasCompany(): Observable<any> {
+    hasCompany(): Observable<boolean> {
         if (this.getUser().company) {
             return of(true);
         } else {
@@ -47,12 +49,12 @@ export class CompanyService {
         return options;
     }
 
-    getCompany(): Observable<any> {
+    getCompany(): Observable<ICompany|boolean> {
         const companyUser = this.getUser();
         const options = this.getRequestHeaders();
         if (options) {
-            return this._http.get<any>(`${API_URI}${companyUser.company._id}`, options).pipe(
-                map(data => {
+            return this._http.get<ICompany>(`${API_URI}${companyUser.company._id}`, options).pipe(
+                map((data: any) => {
                     return data.company;
                 }),
                 catchError(error => {
@@ -64,11 +66,11 @@ export class CompanyService {
         }
     }
 
-    createCompany(company): Observable<any> {
+    createCompany(company: ICompany): Observable<ICompany|boolean> {
         const options = this.getRequestHeaders();
         if (options) {
-            return this._http.post<any>(API_URI, company, options).pipe(
-                map(res => {
+            return this._http.post<ICompany>(API_URI, company, options).pipe(
+                map((res: any) => {
                     return res.msg.company;
                 }),
                 catchError(error => {

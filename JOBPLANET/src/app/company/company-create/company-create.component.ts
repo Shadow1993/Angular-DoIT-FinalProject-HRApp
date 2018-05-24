@@ -36,7 +36,7 @@ export class CompanyCreateComponent implements OnInit {
             .subscribe(res => {
                 if (res) {
                     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                    const user = {...currentUser};
+                    const user = { ...currentUser };
                     user.msg.company = res;
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     window.location.reload();
