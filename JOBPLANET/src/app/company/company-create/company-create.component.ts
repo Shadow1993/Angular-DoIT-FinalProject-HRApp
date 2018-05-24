@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CompanyService } from '../company.service';
 
 @Component({
     selector: 'app-company-create',
@@ -10,7 +11,7 @@ export class CompanyCreateComponent implements OnInit {
 
     public createCompanyForm: FormGroup;
 
-    constructor(private _fb: FormBuilder) { }
+    constructor(private _fb: FormBuilder, private _companyService: CompanyService) { }
 
     ngOnInit() {
         this.formCreate();
@@ -31,7 +32,16 @@ export class CompanyCreateComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.createCompanyForm.value);
+        this._companyService.createCompany(this.createCompanyForm.value)
+            .subscribe(res => {
+                if (res) {
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    const user = {...currentUser};
+                    user.msg.company = res;
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    window.location.reload();
+                }
+            });
     }
 
 }

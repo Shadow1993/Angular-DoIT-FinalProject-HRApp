@@ -13,7 +13,7 @@ export class CompanyService {
 
     constructor(private _http: HttpClient) { }
 
-    getUser() {
+    private getUser() {
         if (user && user.success) {
             return user.msg;
         } else {
@@ -29,41 +29,56 @@ export class CompanyService {
         }
     }
 
-    getCompany(): Observable<any> {
+    private getRequestHeaders() {
         const companyUser = this.getUser();
         const headerOptions = {
             'Content-Type': 'application/json',
             Authorization: ''
         };
-        if (companyUser && companyUser.token && companyUser.company) {
+        if (companyUser && companyUser.token) {
             headerOptions.Authorization = companyUser.token;
         } else {
-            return of(false);
+            return false;
         }
         const headers = new HttpHeaders(headerOptions);
         const options = {
             headers: headers
         };
-        return this._http.get<any>(`${API_URI}${companyUser.company._id}`, options).pipe(
-            map(data => {
-                return data.company;
-            }),
-            catchError(error => {
-                return of(error);
-            })
-        );
+        return options;
+    }
+
+    getCompany(): Observable<any> {
+        const companyUser = this.getUser();
+        const options = this.getRequestHeaders();
+        if (options) {
+            return this._http.get<any>(`${API_URI}${companyUser.company._id}`, options).pipe(
+                map(data => {
+                    return data.company;
+                }),
+                catchError(error => {
+                    return of(error);
+                })
+            );
+        } else {
+            return of(false);
+        }
     }
 
     createCompany(company): Observable<any> {
-        // TODO
-        return this._http.post<any>('', {}).pipe(
-            map(res => {
-                return res;
-            }),
-            catchError(error => {
-                return of(error);
-            })
-        );
+        const options = this.getRequestHeaders();
+        if (options) {
+            return this._http.post<any>(API_URI, company, options).pipe(
+                map(res => {
+                    return res.msg.company;
+                }),
+                catchError(error => {
+                    console.error(error.error);
+                    return of(error.error.success);
+                })
+            );
+        } else {
+            return of(false);
+        }
     }
 
 }
