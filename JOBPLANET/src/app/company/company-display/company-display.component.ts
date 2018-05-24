@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../company.service';
+import ICompany from '../interfaces/ICompany';
 
 @Component({
     selector: 'app-company-display',
@@ -27,8 +28,10 @@ export class CompanyDisplayComponent implements OnInit {
     getUserCompany() {
         this._companyService.getCompany()
             .subscribe(data => {
-                this.company = data;
                 console.log(data);
+                if (data) {
+                    this.company = <ICompany>data;
+                }
             });
     }
 
