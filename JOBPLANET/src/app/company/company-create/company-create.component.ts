@@ -39,7 +39,7 @@ export class CompanyCreateComponent implements OnInit {
                     const user = { ...currentUser };
                     user.msg.company = res;
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    window.location.reload();
+                    this._companyService.checkCompanyUpdate(true);
                 }
             });
     }

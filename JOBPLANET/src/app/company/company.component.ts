@@ -17,8 +17,9 @@ export class CompanyComponent implements OnInit {
     }
 
     switchView() {
-        this._companyService.hasCompany()
+        this._companyService.checkCompany()
             .subscribe(res => {
+                console.log(res);
                 this.hasCompany = res;
             });
     }

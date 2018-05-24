@@ -5,17 +5,21 @@ import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 import ICompany from './interfaces/ICompany';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-
-const user = JSON.parse(localStorage.getItem('currentUser'));
 const API_URI = 'https://doit-hr-app.herokuapp.com/api/companies/';
 
 @Injectable()
 export class CompanyService {
 
+    private _hasCompany: BehaviorSubject<boolean> = new BehaviorSubject(this._checkCompany());
+
+    public readonly hasCompany: Observable<boolean> = this._hasCompany.asObservable();
+
     constructor(private _http: HttpClient) { }
 
-    private getUser() {
+    private _getUser() {
+        const user = JSON.parse(localStorage.getItem('currentUser'));
         if (user && user.success) {
             return user.msg;
         } else {
@@ -23,16 +27,27 @@ export class CompanyService {
         }
     }
 
-    hasCompany(): Observable<boolean> {
-        if (this.getUser().company) {
-            return of(true);
+    private _checkCompany(): boolean {
+        if (this._getUser().company) {
+            return true;
         } else {
-            return of(false);
+            return false;
         }
     }
 
-    private getRequestHeaders() {
-        const companyUser = this.getUser();
+    public checkCompanyUpdate(update: boolean): void {
+        this._hasCompany.next(update);
+    }
+
+    public checkCompany(): Observable<boolean> {
+        return this.hasCompany.map(res => {
+            console.log(res);
+            return res;
+        });
+    }
+
+    private _getRequestHeaders() {
+        const companyUser = this._getUser();
         const headerOptions = {
             'Content-Type': 'application/json',
             Authorization: ''
@@ -49,9 +64,9 @@ export class CompanyService {
         return options;
     }
 
-    getCompany(): Observable<ICompany|boolean> {
-        const companyUser = this.getUser();
-        const options = this.getRequestHeaders();
+    getCompany(): Observable<ICompany | boolean> {
+        const companyUser = this._getUser();
+        const options = this._getRequestHeaders();
         if (options) {
             return this._http.get<ICompany>(`${API_URI}${companyUser.company._id}`, options).pipe(
                 map((data: any) => {
@@ -66,8 +81,8 @@ export class CompanyService {
         }
     }
 
-    createCompany(company: ICompany): Observable<ICompany|boolean> {
-        const options = this.getRequestHeaders();
+    createCompany(company: ICompany): Observable<ICompany | boolean> {
+        const options = this._getRequestHeaders();
         if (options) {
             return this._http.post<ICompany>(API_URI, company, options).pipe(
                 map((res: any) => {
