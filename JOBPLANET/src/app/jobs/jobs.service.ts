@@ -16,7 +16,7 @@ export class JobsService {
         .map((res: Response) => res.json());
 }
 getJobsByKeyword(keyword): Observable<any> {
-  return this._http.get(`http://doit-hr-app.herokuapp.com/API/Jobs/bykeyword/${keyword}`)
+  return this._http.get('http://doit-hr-app.herokuapp.com/API/Jobs/bykeyword/' + keyword)
       .map((res: Response) => res.json());
 }
 

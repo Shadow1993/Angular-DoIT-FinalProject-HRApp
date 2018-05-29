@@ -1,6 +1,6 @@
-<p>This is Admin page </p>
-<div>
-  <label> Back Office </label>
+<h3>Admin page </h3>
+
+ 
   <select (change)="onChange($event)" class="admin" name="Back Office">
     <option name="dropdownMenu" disabled>Select from list</option>
     <option *ngFor="let opt of options" [value]="opt">
@@ -8,9 +8,10 @@
     </option>
 
   </select>
-</div>
+
 <!-- <div *ngIf="currentNav === 'Send message'"> -->
     <!-- <app-email-form></app-email-form> -->
 <!-- </div> -->
-
+<div>
 <router-outlet></router-outlet>
+</div>

@@ -15,22 +15,14 @@ import { JobsService } from '../../jobs/jobs.service';
 })
 export class JobslistComponent implements OnInit {
 
+  public listOfKeywords = ['test', '123', 'kek', 'asdf'];
 
-  constructor(private _http: Http, private _jobsKey: JobsService) { }
-
-
-  filterJobsByKeywords(){
-      this._jobsKey.getJobsByKeyword('asdf').subscribe(data => {
-      this._jobsKey = data;
-      console.log(data);
-    });
-
+  constructor(private _http: Http, private _jobsKey: JobsService) { 
+    
   }
 
-  
-
   ngOnInit() {
-      this._jobsKey.getJobsByKeyword('key').subscribe(data => {
+    this._jobsKey.getJobsByKeyword(this.listOfKeywords[0]).subscribe(data => {
       this._jobsKey = data;
       console.log(data);
     });
