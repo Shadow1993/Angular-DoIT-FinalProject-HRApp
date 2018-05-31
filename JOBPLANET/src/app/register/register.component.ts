@@ -20,20 +20,21 @@ export class RegisterComponent implements OnInit {
 
     this.createRegisterForm = this._fb.group(
       {
-        name: ['', [Validators.required, Validators.minLength(4)]],
-        lastName: ['', [Validators.required, Validators.minLength(10)]],
+        name: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
         username: ['', [Validators.required, Validators.minLength(5)]],
-        password: ['', [Validators.required, Validators.minLength(5)]],
-        email: ['', [Validators.required]],
-        status: ['', [Validators.required, Validators.email]],
-        contry: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.email]],
+        // status: ['', [Validators.required]],
+        city: ['', [Validators.required, Validators.minLength(2)]],
+        contry: ['', [Validators.required, Validators.minLength(2)]],
         locationChange: ['', [Validators.required]],
         jobType: ['', [Validators.required]],
-        experience: ['', [Validators.required]],
+        experience: ['', [Validators.required, Validators.minLength(5)]],
         gender: ['', [Validators.required]],
-        dateOfBirth: ['', [Validators.required]],
-        additionalInfo: ['', [Validators.required]],
-        role: ['', [Validators.required]]
+        dateOfBirth: ['', [Validators.required, Validators.minLength(8)]],
+        additionalInfo: ['', [Validators.required, Validators.maxLength(200)]]
+        // role: ['', [Validators.required]]
     }
     );
 

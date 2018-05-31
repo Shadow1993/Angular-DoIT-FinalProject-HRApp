@@ -1,133 +1,151 @@
 <div class="registry-form">
   <form novalidate [formGroup]="createRegisterForm" (submit)="onSubmit()">
-  <div class="miniFormWrapper">
-  <label for="name">Name</label>
-  <input type="text" placeholder="Name" id="name" formControlName="name">
-  <div *ngIf="(createRegistryForm.get('name').errors && createRegistryForm.get('name').touched)">
-    <span></span>
-    <span></span>
-  </div>
-  </div>
-  <div class="miniFormWrapper">
-  <label for="lastName">Last Name</label>
-  <input type="text" placeholder="Last Name" id="lastName" formControlName="lastName">
-  <div>
-      <span></span>
-      <span></span>
+    <div class="miniFormWrapper">
+      <label for="name">Name</label>
+      <input type="text" placeholder="Name" id="name" formControlName="name">
+      <div *ngIf="(createRegistryForm.get('name').errors && createRegistryForm.get('name').touched)">
+        <span *ngIf="(createRegistryForm.get('name').errors.required)">
+          Please enter your name.
+        </span>
+        <span *ngIf="(createRegistryForm.get('name').errors.minlength)">
+          Must be at least 2 characters long.
+        </span>
+      </div>
     </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="username">Userame</label>
-  <input type="text" placeholder="Username" id="username" formControlName="username">
-  <div>
-      <span></span>
-      <span></span>
+    <div class="miniFormWrapper">
+      <label for="lastName">Last Name</label>
+      <input type="text" placeholder="Last Name" id="lastName" formControlName="lastName">
+      <div *ngIf="(createRegistryForm.get('lastName').errors && createRegistryForm.get('lastName').touched)">
+        <span *ngIf="(createRegistryForm.get('lastName').errors.required)">
+          Please enter your surname.
+        </span>
+        <span *ngIf="(createRegistryForm.get('lastName').errors.minlength)">
+          Must be at least 2 characters long.
+        </span>
+      </div>
     </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="password">Password</label>
-  <input type="text" placeholder="Password" id="password" formControlName="password">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="email">E-mail</label>
-  <input type="text" placeholder="E-mail" id="email" formControlName="email">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="status">Status</label>
-  <input type="text" placeholder="Status" id="status" formControlName="status">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="city">City</label>
-  <input type="text" placeholder="City" id="city" formControlName="city">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="country">Country</label>
-  <input type="text" placeholder="Country" id="country" formControlName="country">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="locationChange">Location Change</label>
-  <select id="locationChange" formControlName="locationChange">
-    <option value="Location Change" disabled>Location Change</option>
-    <option value="Yes">Yes</option>
-    <option value="No">No</option>
-  </select>
-  <div>
-      <span></span>
-      <span></span>
-  </div>  
-</div>
-  <div class="miniFormWrapper">
-  <label for="jobType">Job Type</label>
-  <input type="text" placeholder="Job Type" id="jobType" formControlName="jobType">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="experience">Experience</label>
-  <input type="text" placeholder="Experience" id="experience" formControlName="experience">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="gender">Gender</label>
-  <select id="gender" formControlName="gender">
-    <option value="Gender" disabled>Gender</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-  </select>
-  <div>
-      <span></span>
-      <span></span>
-  </div>  
-</div>
-  <div class="miniFormWrapper">
-  <label for="dateOfBirth">Date of Birth</label>
-  <input type="text" placeholder="Date of Birth" id="dateOfBirth" formControlName="dateOfBirth">
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="additionalInfo">Additional Info</label>
-  <textarea type="text" placeholder="Additional Info" id="additionalInfo" formControlName="additionalInfo"></textarea>
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div class="miniFormWrapper">
-  <label for="role">Role</label>
-  <input type="text" placeholder="Role" id="role" formControlName="role"> 
-  <div>
-      <span></span>
-      <span></span>
-  </div>
-</div>
-  <div><input class="miniFormWrapper registerButton" type="submit" value="Register now! And get a free pony!!!"></div>
-</form>
+    <div class="miniFormWrapper">
+      <label for="username">Userame</label>
+      <input type="text" placeholder="Username" id="username" formControlName="username">
+      <div *ngIf="(createRegistryForm.get('username').errors && createRegistryForm.get('username').touched)">
+        <span *ngIf="(createRegistryForm.get('username').errors.required)">
+          Please enter your username.
+        </span>
+        <span *ngIf="(createRegistryForm.get('username').errors.minlength)">
+          Must be at least 5 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="password">Password</label>
+      <input type="text" placeholder="Password" id="password" formControlName="password">
+      <div *ngIf="(createRegistryForm.get('password').errors && createRegistryForm.get('password').touched)">
+        <span *ngIf="(createRegistryForm.get('password').errors.required)">
+          Please enter your password.
+        </span>
+        <span *ngIf="(createRegistryForm.get('password').errors.minlength)">
+          Must be at least 6 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="email">E-mail</label>
+      <input type="text" placeholder="E-mail" id="email" formControlName="email">
+      <div *ngIf="(createRegistryForm.get('email').errors && createRegistryForm.get('email').touched)">
+        <span *ngIf="(createRegistryForm.get('email').errors.required)">
+          Please enter your e-mail.
+        </span>
+        <span *ngIf="(createCompanyForm.get('email').errors.email && !createCompanyForm.get('email').errors.required)">
+          This doesn't look like a valid e-mail. Doh!
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="city">City</label>
+      <input type="text" placeholder="City" id="city" formControlName="city">
+      <div *ngIf="(createRegistryForm.get('city').errors && createRegistryForm.get('city').touched)">
+        <span *ngIf="(createRegistryForm.get('city').errors.required)">
+          Please enter your city.
+        </span>
+        <span *ngIf="(createRegistryForm.get('city').errors.minlength)">
+          Must be at least 2 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="country">Country</label>
+      <input type="text" placeholder="Country" id="country" formControlName="country">
+      <div *ngIf="(createRegistryForm.get('country').errors && createRegistryForm.get('country').touched)">
+        <span *ngIf="(createRegistryForm.get('country').errors.required)">
+          Please enter your country.
+        </span>
+        <span *ngIf="(createRegistryForm.get('country').errors.minlength)">
+          Must be at least 2 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="locationChange">Location Change</label>
+      <select id="locationChange" formControlName="locationChange">
+        <option value="Location Change" disabled>Location Change</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="jobType">Job Type</label>
+      <select id="jobType">
+        <option value="job-type" disabled>Choose an option</option>
+        <option value="full-time">Full-time</option>
+        <option value="part-time">Part-time</option>
+    </select>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="experience">Experience</label>
+      <input type="text" placeholder="Experience" id="experience" formControlName="experience">
+      <div *ngIf="(createRegistryForm.get('experience').errors && createRegistryForm.get('experience').touched)">
+        <span *ngIf="(createRegistryForm.get('experience').errors.required)">
+          Please enter your work experience.
+        </span>
+        <span *ngIf="(createRegistryForm.get('country').errors.minlength)">
+          Must be at least 5 characters long.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender">
+        <option value="Gender" disabled>Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="text" placeholder="Date of Birth" id="dateOfBirth" formControlName="dateOfBirth">
+      <div *ngIf="(createRegistryForm.get('dateOfBirth').errors && createRegistryForm.get('dateOfBirth').touched)">
+        <span *ngIf="(createRegistryForm.get('dateOfBirth').errors.required)">
+          Please enter your date of birth.
+        </span>
+        <span *ngIf="(createRegistryForm.get('dateOfBirth').errors.minlength)">
+          Date is not valid.
+        </span>
+      </div>
+    </div>
+    <div class="miniFormWrapper">
+      <label for="additionalInfo">Additional Info</label>
+      <textarea type="text" placeholder="Additional Info" id="additionalInfo" formControlName="additionalInfo"></textarea>
+      <div *ngIf="(createRegistryForm.get('additionalInfo').errors && createRegistryForm.get('additionalInfo').touched)">
+        <span *ngIf="(createRegistryForm.get('dateOfBirth').errors.required)">
+          Please write any additional info here.
+        </span>
+        <span *ngIf="(createRegistryForm.get('dateOfBirth').errors.maxlength)">
+          Exceeded maximum length of 200 characters.
+        </span>
+      </div>
+    </div>
+    <div>
+      <input class="miniFormWrapper registerButton" type="submit" value="Register now! And get a free pony!!!">
+    </div>
+  </form>
 </div>
